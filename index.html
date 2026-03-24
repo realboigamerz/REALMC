@@ -213,7 +213,7 @@ box-shadow:0 0 20px #00ff88;
 <div class="card" id="stats">
 <h2>⚡ Server Stats</h2>
 <p>Max Players: 20</p>
-<p id="status">Checking...</p>
+<p id=2df179d7-97ed-40e1-a298-b12ca24a0507"status">Checking...</p>
 </div>
 
 <!-- SHOP -->
@@ -245,37 +245,38 @@ box-shadow:0 0 20px #00ff88;
 
 <script>
 // LOADER
-window.onload=()=>{document.getElementById("loader").style.display="none";}
+window.onload = () => {
+document.getElementById("loader").style.display = "none";
+}
 
-// COPY IP
+// COPY
 function join(){
 navigator.clipboard.writeText("shiny.frezio.cloud:19200");
 alert("IP Copied!");
 }
 
-// SHOP BUY
+// BUY FUNCTION (IMPORTANT)
 function buy(rank){
-alert("To buy "+rank+" join Discord!");
+alert("To buy " + rank + ", join Discord!");
 window.open("https://discord.gg/EwBH7wJFNQ");
 }
 
-// SERVER API
+// API
 fetch("https://api.mcsrvstat.us/2/shiny.frezio.cloud")
-.then(r=>r.json())
-.then(d=>{
-let online=d.players?d.players.online:0;
-document.getElementById("players").innerText="Players: "+online+"/20";
-document.getElementById("status").innerText=d.online?"Online ✅":"Offline ❌";
+.then(r => r.json())
+.then(d => {
+let online = d.players ? d.players.online : 0;
+document.getElementById("players").innerText = "Players: " + online + "/20";
+document.getElementById("status").innerText = d.online ? "Online ✅" : "Offline ❌";
 });
 
 // CURSOR
-let cursor=document.getElementById("cursor");
-document.addEventListener("mousemove",e=>{
-cursor.style.left=e.clientX+"px";
-cursor.style.top=e.clientY+"px";
+let cursor = document.getElementById("cursor");
+document.addEventListener("mousemove", e => {
+cursor.style.left = e.clientX + "px";
+cursor.style.top = e.clientY + "px";
 });
 </script>
 
+</script>
 </body>
-</html>
-```
