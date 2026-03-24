@@ -53,7 +53,7 @@ animation:pulse 1s infinite;
 100%{opacity:0.3;}
 }
 
-/* LOGO FIX */
+/* LOGO */
 .logo-img{
 width:320px;
 max-width:95%;
@@ -63,13 +63,11 @@ animation:logoGlow 2s infinite alternate;
 transition:0.4s;
 }
 
-/* GLOW */
 @keyframes logoGlow{
 from{filter:drop-shadow(0 0 10px #00ff88);}
 to{filter:drop-shadow(0 0 40px #00ff88);}
 }
 
-/* HOVER 3D */
 .logo-img:hover{
 transform:scale(1.15) rotateX(10deg) rotateY(10deg);
 filter:drop-shadow(0 0 60px #00ff88);
@@ -81,16 +79,8 @@ position:fixed;
 width:100%;
 height:100%;
 z-index:-1;
-background:linear-gradient(-45deg,#000,#001f3f,#000,#002f2f);
-background-size:400% 400%;
-animation:moveBG 10s infinite linear;
+background:radial-gradient(circle at center,#00ff88 0%,#000 60%);
 }
-
-@keyframes moveBG{
-0%{background-position:0% 50%;}
-50%{background-position:100% 50%;}
-100%{background-position:0% 50%;}
-
 
 /* NAVBAR */
 .navbar{
@@ -153,6 +143,27 @@ height:220px;
 border:none;
 border-radius:10px;
 }
+
+/* ===== SHOP CSS ===== */
+.shop-container{
+display:flex;
+flex-wrap:wrap;
+justify-content:center;
+gap:20px;
+}
+
+.shop-item{
+background:rgba(0,255,136,0.08);
+padding:20px;
+border-radius:15px;
+width:200px;
+transition:0.3s;
+}
+
+.shop-item:hover{
+transform:scale(1.1);
+box-shadow:0 0 20px #00ff88;
+}
 </style>
 </head>
 
@@ -167,14 +178,13 @@ border-radius:10px;
 <a href="#">Home</a>
 <a href="#yt">YouTube</a>
 <a href="#stats">Stats</a>
+<a href="#shop">Shop</a>
 <a href="https://discord.gg/EwBH7wJFNQ">Discord</a>
 </div>
 
 <!-- HERO -->
 <div class="hero">
-
 <img src="logo.png" class="logo-img">
-
 <h1>Realmc SMP</h1>
 <p>Best Survival Minecraft Server</p>
 
@@ -184,7 +194,6 @@ border-radius:10px;
 <button onclick="join()">JOIN NOW</button>
 <p id="players">Loading...</p>
 </div>
-
 </div>
 
 <!-- YOUTUBE -->
@@ -196,9 +205,8 @@ border-radius:10px;
 
 <br>
 
-<button onclick="window.open('https://youtube.com/@shadow_gamin9g?si=U2iuQJG8lLpiS2iQ')">Shadow Gaming</button>
-<button onclick="window.open('https://youtube.com/@realboigamerz?si=pPm2TuCWFGYiM1E5')">RealBoi Gamerz</button>
-
+<button onclick="window.open('https://youtube.com/@shadow_gamin9g')">Shadow Gaming</button>
+<button onclick="window.open('https://youtube.com/@realboigamerz')">RealBoi Gamerz</button>
 </div>
 
 <!-- STATS -->
@@ -208,18 +216,50 @@ border-radius:10px;
 <p id="status">Checking...</p>
 </div>
 
-<script>
+<!-- SHOP -->
+<div class="card" id="shop">
+<h2>🛒 Server Shop</h2>
 
+<div class="shop-container">
+
+<div class="shop-item">
+<h3>VIP</h3>
+<p>₹49</p>
+<button onclick="buy('VIP')">Buy</button>
+</div>
+
+<div class="shop-item">
+<h3>MVP</h3>
+<p>₹99</p>
+<button onclick="buy('MVP')">Buy</button>
+</div>
+
+<div class="shop-item">
+<h3>PRO</h3>
+<p>₹149</p>
+<button onclick="buy('PRO')">Buy</button>
+</div>
+
+</div>
+</div>
+
+<script>
 // LOADER
 window.onload=()=>{document.getElementById("loader").style.display="none";}
 
-// COPY
+// COPY IP
 function join(){
 navigator.clipboard.writeText("shiny.frezio.cloud:19200");
 alert("IP Copied!");
 }
 
-// API
+// SHOP BUY
+function buy(rank){
+alert("To buy "+rank+" join Discord!");
+window.open("https://discord.gg/EwBH7wJFNQ");
+}
+
+// SERVER API
 fetch("https://api.mcsrvstat.us/2/shiny.frezio.cloud")
 .then(r=>r.json())
 .then(d=>{
