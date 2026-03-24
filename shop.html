@@ -1,59 +1,34 @@
-```html
-<!DOCTYPE html>
-<html>
-<head>
-<title>Shop</title>
-<style>
-body{background:black;color:white;text-align:center;}
-.navbar a{color:#00ff88;margin:10px;text-decoration:none;}
+```html id="shopclean01"
+<!-- SHOP -->
+<div class="card" id="shop">
+<h2>🛒 Server Shop</h2>
 
-.shop{display:flex;justify-content:center;gap:20px;margin-top:50px;}
-.item{background:#111;padding:20px;border-radius:10px;}
+<div class="shop-container">
 
-button{padding:10px;border:none;background:#00ff88;}
-</style>
-</head>
-
-<body>
-
-<div class="navbar">
-<a href="index.html">Home</a>
-<a href="smp.html">SMP</a>
-<a href="youtube.html">YouTube</a>
-<a href="shop.html">Shop</a>
-</div>
-
-<h1>🛒 Shop</h1>
-
-<div class="shop">
-
-<div class="item">
+<!-- VIP -->
+<div class="shop-item">
 <h3>VIP</h3>
 <p>₹49</p>
+<p>✔ Basic perks</p>
 <button onclick="buy('VIP')">Buy</button>
 </div>
 
-<div class="item">
+<!-- MVP -->
+<div class="shop-item">
 <h3>MVP</h3>
 <p>₹99</p>
+<p>✔ Extra homes</p>
 <button onclick="buy('MVP')">Buy</button>
 </div>
 
-<div class="item">
+<!-- PRO -->
+<div class="shop-item">
 <h3>PRO</h3>
 <p>₹149</p>
+<p>✔ Special kit</p>
 <button onclick="buy('PRO')">Buy</button>
 </div>
 
 </div>
-
-<script>
-function buy(rank){
-alert("Buy "+rank+" via Discord");
-window.open("https://discord.gg/EwBH7wJFNQ");
-}
-</script>
-
-</body>
-</html>
+</div>
 ```
