@@ -1,0 +1,120 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Realmc Shop</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+
+<style>
+body{
+margin:0;
+font-family:'Orbitron',sans-serif;
+background:black;
+color:white;
+text-align:center;
+}
+
+/* NAVBAR */
+.navbar{
+position:fixed;
+top:0;
+width:100%;
+display:flex;
+justify-content:center;
+gap:20px;
+padding:12px;
+background:rgba(0,0,0,0.7);
+}
+.navbar a{
+color:#00ff88;
+text-decoration:none;
+font-weight:bold;
+}
+
+/* CARD */
+.card{
+background:rgba(255,255,255,0.05);
+padding:20px;
+margin:100px auto 20px;
+border-radius:15px;
+max-width:700px;
+}
+
+/* SHOP */
+.shop-container{
+display:flex;
+flex-wrap:wrap;
+justify-content:center;
+gap:20px;
+}
+
+.shop-item{
+background:rgba(0,255,136,0.08);
+padding:20px;
+border-radius:15px;
+width:200px;
+transition:0.3s;
+}
+
+.shop-item:hover{
+transform:scale(1.1);
+box-shadow:0 0 20px #00ff88;
+}
+
+button{
+padding:10px 20px;
+border:none;
+border-radius:30px;
+background:linear-gradient(45deg,#00ff88,#00d4ff);
+cursor:pointer;
+}
+</style>
+</head>
+
+<body>
+
+<div class="navbar">
+<a href="index.html">Home</a>
+<a href="shop.html">Shop</a>
+<a href="https://discord.gg/EwBH7wJFNQ">Discord</a>
+</div>
+
+<div class="card">
+<h1>🛒 Realmc Shop</h1>
+
+<div class="shop-container">
+
+<div class="shop-item">
+<h3>VIP</h3>
+<p>₹49</p>
+<button onclick="buy('VIP')">Buy</button>
+</div>
+
+<div class="shop-item">
+<h3>MVP</h3>
+<p>₹99</p>
+<button onclick="buy('MVP')">Buy</button>
+</div>
+
+<div class="shop-item">
+<h3>PRO</h3>
+<p>₹149</p>
+<button onclick="buy('PRO')">Buy</button>
+</div>
+
+</div>
+</div>
+
+<script>
+function buy(rank){
+alert("To buy "+rank+" join Discord!");
+window.open("https://discord.gg/EwBH7wJFNQ");
+}
+</script>
+
+</body>
+</html>
+```
