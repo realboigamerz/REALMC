@@ -3,46 +3,231 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Realmc SMP</title>
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet">
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+
 <style>
-body{margin:0;font-family:'Orbitron';background:black;color:white;text-align:center;}
-.navbar{position:fixed;top:0;width:100%;display:flex;justify-content:center;gap:20px;padding:12px;background:#000;}
-.navbar a{color:#00ff88;text-decoration:none;}
-.hero{margin-top:100px;}
-.card{background:#111;padding:20px;margin:20px auto;border-radius:15px;width:300px;}
-button{padding:10px 20px;border:none;border-radius:20px;background:#00ff88;}
+body{
+margin:0;
+font-family:'Orbitron',sans-serif;
+color:white;
+background:black;
+overflow-x:hidden;
+cursor:none;
+text-align:center;
+}
+
+/* CURSOR */
+.cursor{
+position:fixed;
+width:15px;
+height:15px;
+background:#00ff88;
+border-radius:50%;
+pointer-events:none;
+z-index:9999;
+box-shadow:0 0 20px #00ff88,0 0 40px #00ff88;
+}
+
+/* LOADER */
+#loader{
+position:fixed;
+width:100%;
+height:100%;
+background:black;
+display:flex;
+justify-content:center;
+align-items:center;
+z-index:9999;
+}
+.loader-text{
+color:#00ff88;
+font-size:25px;
+animation:pulse 1s infinite;
+}
+@keyframes pulse{
+0%{opacity:0.3;}
+50%{opacity:1;}
+100%{opacity:0.3;}
+}
+
+/* LOGO */
+.logo-img{
+width:320px;
+max-width:95%;
+display:block;
+margin:20px auto;
+animation:logoGlow 2s infinite alternate;
+transition:0.4s;
+}
+
+@keyframes logoGlow{
+from{filter:drop-shadow(0 0 10px #00ff88);}
+to{filter:drop-shadow(0 0 40px #00ff88);}
+}
+
+.logo-img:hover{
+transform:scale(1.15) rotateX(10deg) rotateY(10deg);
+filter:drop-shadow(0 0 60px #00ff88);
+}
+
+/* BG */
+.bg{
+position:fixed;
+width:100%;
+height:100%;
+z-index:-1;
+background:linear-gradient(45deg,#000,#111,#000);
+}
+
+/* NAVBAR */
+.navbar{
+position:fixed;
+top:0;
+width:100%;
+display:flex;
+justify-content:center;
+gap:20px;
+padding:12px;
+background:rgba(0,0,0,0.7);
+backdrop-filter:blur(10px);
+z-index:999;
+}
+.navbar a{
+color:#00ff88;
+text-decoration:none;
+font-weight:bold;
+}
+.navbar a:hover{
+text-shadow:0 0 10px #00ff88;
+}
+
+/* HERO */
+.hero{
+padding-top:100px;
+}
+
+h1{
+font-size:40px;
+background:linear-gradient(45deg,#00ff88,#00d4ff);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+/* CARD */
+.card{
+background:rgba(255,255,255,0.05);
+padding:20px;
+margin:15px auto;
+border-radius:15px;
+max-width:500px;
+backdrop-filter:blur(10px);
+}
+
+/* BUTTON */
+button{
+padding:10px 20px;
+border:none;
+border-radius:30px;
+background:linear-gradient(45deg,#00ff88,#00d4ff);
+cursor:pointer;
+margin:5px;
+}
+
+/* YT */
+iframe{
+width:100%;
+height:220px;
+border:none;
+border-radius:10px;
+}
 </style>
 </head>
 
 <body>
 
+<div id="loader"><div class="loader-text">Loading Realmc...</div></div>
+<div class="cursor" id="cursor"></div>
+<div class="bg"></div>
+
+<!-- NAVBAR -->
 <div class="navbar">
 <a href="index.html">Home</a>
 <a href="smp.html">SMP</a>
 <a href="youtube.html">YouTube</a>
 <a href="shop.html">Shop</a>
+<a href="https://discord.gg/EwBH7wJFNQ">Discord</a>
 </div>
 
+<!-- HERO -->
 <div class="hero">
+
+<img src="logo.png" class="logo-img">
+
 <h1>Realmc SMP</h1>
-<p>Best Survival Server</p>
+<p>Best Survival Minecraft Server</p>
 
 <div class="card">
-<p>IP: shiny.frezio.cloud</p>
-<p>Port: 19200</p>
-<button onclick="copyIP()">JOIN</button>
+<p><b>IP:</b> shiny.frezio.cloud</p>
+<p><b>Port:</b> 19200</p>
+<button onclick="join()">JOIN NOW</button>
+<p id="players">Loading...</p>
 </div>
 
+</div>
+
+<!-- YOUTUBE -->
+<div class="card" id="yt">
+<h2>🎥 YouTube Showcase</h2>
+
+<iframe src="https://www.youtube.com/embed/mI3ug6DPFZk"></iframe>
+<iframe src="https://www.youtube.com/embed/Rb5xhg1fCjo"></iframe>
+
+<br>
+
+<button onclick="window.open('https://youtube.com/@shadow_gamin9g')">Shadow Gaming</button>
+<button onclick="window.open('https://youtube.com/@realboigamerz')">RealBoi Gamerz</button>
+
+</div>
+
+<!-- STATS -->
+<div class="card" id="stats">
+<h2>⚡ Server Stats</h2>
+<p>Max Players: 20</p>
+<p id="status">Checking...</p>
 </div>
 
 <script>
-function copyIP(){
+
+// LOADER
+window.onload=()=>{document.getElementById("loader").style.display="none";}
+
+// COPY
+function join(){
 navigator.clipboard.writeText("shiny.frezio.cloud:19200");
 alert("IP Copied!");
 }
+
+// API
+fetch("https://api.mcsrvstat.us/2/shiny.frezio.cloud")
+.then(r=>r.json())
+.then(d=>{
+let online=d.players?d.players.online:0;
+document.getElementById("players").innerText="Players: "+online+"/20";
+document.getElementById("status").innerText=d.online?"Online ✅":"Offline ❌";
+});
+
+// CURSOR
+let cursor=document.getElementById("cursor");
+document.addEventListener("mousemove",e=>{
+cursor.style.left=e.clientX+"px";
+cursor.style.top=e.clientY+"px";
+});
 </script>
 
 </body>
 </html>
 ```
+
