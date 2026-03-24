@@ -53,7 +53,7 @@ animation:pulse 1s infinite;
 100%{opacity:0.3;}
 }
 
-/* LOGO */
+/* LOGO FIX */
 .logo-img{
 width:320px;
 max-width:95%;
@@ -63,11 +63,13 @@ animation:logoGlow 2s infinite alternate;
 transition:0.4s;
 }
 
+/* GLOW */
 @keyframes logoGlow{
 from{filter:drop-shadow(0 0 10px #00ff88);}
 to{filter:drop-shadow(0 0 40px #00ff88);}
 }
 
+/* HOVER 3D */
 .logo-img:hover{
 transform:scale(1.15) rotateX(10deg) rotateY(10deg);
 filter:drop-shadow(0 0 60px #00ff88);
@@ -79,8 +81,16 @@ position:fixed;
 width:100%;
 height:100%;
 z-index:-1;
-background:linear-gradient(45deg,#000,#111,#000);
+background:linear-gradient(-45deg,#000,#001f3f,#000,#002f2f);
+background-size:400% 400%;
+animation:moveBG 10s infinite linear;
 }
+
+@keyframes moveBG{
+0%{background-position:0% 50%;}
+50%{background-position:100% 50%;}
+100%{background-position:0% 50%;}
+
 
 /* NAVBAR */
 .navbar{
@@ -154,10 +164,9 @@ border-radius:10px;
 
 <!-- NAVBAR -->
 <div class="navbar">
-<a href="index.html">Home</a>
-<a href="smp.html">SMP</a>
-<a href="youtube.html">YouTube</a>
-<a href="shop.html">Shop</a>
+<a href="#">Home</a>
+<a href="#yt">YouTube</a>
+<a href="#stats">Stats</a>
 <a href="https://discord.gg/EwBH7wJFNQ">Discord</a>
 </div>
 
@@ -187,8 +196,8 @@ border-radius:10px;
 
 <br>
 
-<button onclick="window.open('https://youtube.com/@shadow_gamin9g')">Shadow Gaming</button>
-<button onclick="window.open('https://youtube.com/@realboigamerz')">RealBoi Gamerz</button>
+<button onclick="window.open('https://youtube.com/@shadow_gamin9g?si=U2iuQJG8lLpiS2iQ')">Shadow Gaming</button>
+<button onclick="window.open('https://youtube.com/@realboigamerz?si=pPm2TuCWFGYiM1E5')">RealBoi Gamerz</button>
 
 </div>
 
@@ -230,4 +239,3 @@ cursor.style.top=e.clientY+"px";
 </body>
 </html>
 ```
-
