@@ -518,23 +518,52 @@ footer span{color:var(--green);}
       </div>
     </div>
  
-    <div class="payment-section fade-in" id="paymentSection">
-      <h3>💳 PAYMENT DETAILS</h3>
-      <div id="selectedItem" style="background:rgba(255,215,0,.1);border:2px solid rgba(255,215,0,.3);border-radius:12px;padding:12px 20px;margin-bottom:20px;font-family:'Press Start 2P',monospace;font-size:11px;color:var(--gold);display:none;">
-        Selected: <span id="itemName"></span>
-      </div>
-      <div class="qr-placeholder">
-        📷
-        <p>Your QR Code Here</p>
-        <p style="font-size:10px;margin-top:-8px;">(Upload QR image)</p>
-      </div>
-      <p style="font-size:12px;color:rgba(255,255,255,.5);margin:10px 0;">OR pay via UPI ID:</p>
-      <div class="upi-id" onclick="copyIP('realboigamerz@upi')" id="upiDisplay">
-        📱 realboigamerz@upi (tap to copy)
-      </div>
-      <div class="payment-note">
-        After payment, DM proof on YouTube or Discord.<br/>
-        <strong style="color:var(--green)">Your rank will be applied within 24 hours!</strong>
+   <div style="
+    text-align:center;
+    padding:25px;
+    background:#111;
+    color:white;
+    border-radius:15px;
+    width:320px;
+    margin:auto;
+">
+
+    <h2>💎 Buy Ranks</h2>
+
+    <!-- Rank Selection -->
+    <select id="rank" style="padding:10px; border-radius:10px; margin:10px;">
+        <option value="VIP - ₹50">VIP - ₹50</option>
+        <option value="MVP - ₹100">MVP - ₹100</option>
+        <option value="PRO - ₹200">PRO - ₹200</option>
+    </select>
+
+    <br>
+
+    <!-- Buy Button -->
+    <button onclick="buyRank()" style="
+        padding:10px 20px;
+        border:none;
+        border-radius:10px;
+        background:lime;
+        font-weight:bold;
+        cursor:pointer;
+    ">
+        Buy Now
+    </button>
+
+</div>
+
+<script>
+function buyRank(){
+    var rank = document.getElementById("rank").value;
+
+    alert("You selected: " + rank + "\\nRedirecting to UPI...");
+
+    window.location.href = "upi://pay?pa=freefireavijit1234@oksbi&pn=RealMC&cu=INR";
+}
+</script>
+
+</div>
       </div>
     </div>
   </div>
