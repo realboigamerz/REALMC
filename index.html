@@ -461,106 +461,206 @@ footer span{color:var(--green);}
  
 <div class="page" id="page-shop">
   <div class="section">
-    <h2 class="section-title" style="color:var(--gold)">🛒 SERVER SHOP</h2>
-    <p class="section-sub">Upgrade your RealMC experience • Ranks &amp; TopUp</p>
- 
-    <h3 style="font-family:'Press Start 2P',monospace;font-size:14px;color:var(--cyan);text-align:center;margin-bottom:24px;">👑 RANKS</h3>
-    <div class="ranks-grid">
-      <div class="rank-card vip fade-in">
-        <span class="rank-crown">💎</span>
-        <div class="rank-name">VIP</div>
-        <div style="font-size:13px;color:rgba(255,255,255,.5);margin-bottom:8px;">Entry Level Rank</div>
-        <div class="rank-price">₹60</div>
-        <div style="display:flex;flex-wrap:wrap;gap:4px;justify-content:center;margin:12px 0;">
-          <span class="rank-badge">✦ VIP Tag</span>
-          <span class="rank-badge">✦ Color Chat</span>
-          <span class="rank-badge">✦ Perks</span>
-        </div>
-        <button class="buy-btn" onclick="openPayment('VIP','₹60')">BUY VIP — ₹60</button>
-      </div>
- 
-      <div class="rank-card real fade-in">
-        <span class="rank-crown" style="animation-delay:.2s">⭐</span>
-        <div class="rank-name">REAL</div>
-        <div style="font-size:13px;color:rgba(255,255,255,.5);margin-bottom:8px;">Mid Tier Rank</div>
-        <div class="rank-price">₹150</div>
-        <div style="display:flex;flex-wrap:wrap;gap:4px;justify-content:center;margin:12px 0;">
-          <span class="rank-badge">✦ REAL Tag</span>
-          <span class="rank-badge">✦ All VIP Perks</span>
-          <span class="rank-badge">✦ Extra Perks</span>
-        </div>
-        <button class="buy-btn" onclick="openPayment('REAL','₹150')">BUY REAL — ₹150</button>
-      </div>
- 
-      <div class="rank-card titan fade-in">
-        <span class="rank-crown" style="animation-delay:.4s">👑</span>
-        <div class="rank-name">TITAN</div>
-        <div style="font-size:13px;color:rgba(255,255,255,.5);margin-bottom:8px;">Top Tier Rank</div>
-        <div class="rank-price">₹220</div>
-        <div style="display:flex;flex-wrap:wrap;gap:4px;justify-content:center;margin:12px 0;">
-          <span class="rank-badge">✦ TITAN Tag</span>
-          <span class="rank-badge">✦ All Perks</span>
-          <span class="rank-badge">✦ Exclusive Access</span>
-        </div>
-        <button class="buy-btn" onclick="openPayment('TITAN','₹220')">BUY TITAN — ₹220</button>
-      </div>
-    </div>
- 
-    <div class="topup-section fade-in">
-      <div class="topup-title">💰 TOP-UP STORE</div>
-      <div class="topup-grid">
-        <div class="topup-card">
-          <span class="topup-icon">💎</span>
-          <div class="topup-name">64x Diamond</div>
-          <div class="topup-price">₹20</div>
-          <button class="buy-btn" style="margin-top:12px;background:linear-gradient(135deg,var(--cyan),#0099cc);color:#000;border-radius:10px;padding:10px;cursor:pointer;font-family:'Press Start 2P',monospace;font-size:10px;border:none;width:100%;transition:all .3s;" onclick="openPayment('64x Diamond','₹20')">BUY NOW</button>
-        </div>
-      </div>
-    </div>
- 
-   <div style="
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RealMC Store</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body{
+    background:#0a0a0a;
+    color:white;
+}
+
+/* Header */
+.header{
     text-align:center;
-    padding:25px;
+    padding:30px 20px;
+}
+.header h1{
+    font-size:40px;
+    font-weight:700;
+}
+.header p{
+    color:gray;
+    margin-top:5px;
+}
+
+/* Username */
+.user{
+    text-align:center;
+    margin-top:10px;
+}
+.user input{
+    padding:12px;
+    width:250px;
+    border:none;
+    border-radius:8px;
+    outline:none;
     background:#111;
     color:white;
+}
+
+/* Shop Grid */
+.shop{
+    display:grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
+    gap:25px;
+    padding:40px;
+}
+
+/* Card */
+.card{
+    background:#111;
+    padding:25px;
     border-radius:15px;
-    width:320px;
-    margin:auto;
-">
+    text-align:center;
+    transition:0.3s;
+    border:1px solid #1f1f1f;
+}
 
-    <h2>💎 Buy Ranks</h2>
+.card:hover{
+    transform:translateY(-5px);
+    border-color:cyan;
+}
 
-    <!-- Rank Selection -->
-    <select id="rank" style="padding:10px; border-radius:10px; margin:10px;">
-        <option value="VIP - ₹50">VIP - ₹50</option>
-        <option value="MVP - ₹100">MVP - ₹100</option>
-        <option value="PRO - ₹200">PRO - ₹200</option>
-    </select>
+/* Rank */
+.rank{
+    font-size:22px;
+    font-weight:600;
+}
 
-    <br>
+/* Price */
+.price{
+    margin:10px 0;
+    color:#00ff99;
+}
 
-    <!-- Buy Button -->
-    <button onclick="buyRank()" style="
-        padding:10px 20px;
-        border:none;
-        border-radius:10px;
-        background:lime;
-        font-weight:bold;
-        cursor:pointer;
-    ">
-        Buy Now
-    </button>
+/* Button */
+.btn{
+    padding:10px 20px;
+    border:none;
+    border-radius:8px;
+    background:#00ff99;
+    color:black;
+    font-weight:600;
+    cursor:pointer;
+}
+
+.btn:hover{
+    opacity:0.8;
+}
+
+/* Popup */
+.popup{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.7);
+    display:none;
+    justify-content:center;
+    align-items:center;
+}
+
+.popup-box{
+    background:#111;
+    padding:30px;
+    border-radius:10px;
+    text-align:center;
+    width:300px;
+}
+
+.popup-box h2{
+    margin-bottom:10px;
+}
+
+.popup-box p{
+    color:gray;
+    margin-bottom:15px;
+}
+</style>
+
+</head>
+<body>
+
+<div class="header">
+    <h1>💎 RealMC Store</h1>
+    <p>Buy ranks & support the server</p>
+</div>
+
+<div class="user">
+    <input type="text" id="username" placeholder="Enter Minecraft Username">
+</div>
+
+<div class="shop">
+
+    <div class="card">
+        <div class="rank">VIP</div>
+        <div class="price">₹60</div>
+        <button class="btn" onclick="buy('VIP','₹50')">Buy</button>
+    </div>
+
+    <div class="card">
+        <div class="rank">REAL</div>
+        <div class="price">₹149</div>
+        <button class="btn" onclick="buy('MVP','₹100')">Buy</button>
+    </div>
+
+    <div class="card">
+        <div class="rank">TITEN</div>
+        <div class="price">₹220</div>
+        <button class="btn" onclick="buy('PRO','₹200')">Buy</button>
+    </div>
 
 </div>
 
+<!-- Popup -->
+<div class="popup" id="popup">
+    <div class="popup-box">
+        <h2 id="rankName"></h2>
+        <p id="details"></p>
+        <button class="btn" onclick="goDiscord()">Continue</button>
+        <br><br>
+        <button class="btn" onclick="closePopup()">Cancel</button>
+    </div>
+</div>
+
 <script>
-function buyRank(){
-    var rank = document.getElementById("rank").value;
+function buy(rank, price){
+    let user = document.getElementById("username").value;
 
-    alert("You selected: " + rank + "\\nRedirecting to UPI...");
+    if(user === ""){
+        alert("Please enter username");
+        return;
+    }
 
-    window.location.href = "upi://pay?pa=freefireavijit1234@oksbi&pn=RealMC&cu=INR";
+    document.getElementById("popup").style.display = "flex";
+    document.getElementById("rankName").innerText = rank;
+    document.getElementById("details").innerText = "Player: " + user + " | Price: " + price;
 }
+
+function closePopup(){
+    document.getElementById("popup").style.display = "none";
+}
+
+function goDiscord(){
+    window.open("https://discord.gg/ee6U8rDP98");
+}
+</script>
+
+</body>
+</html>
 </script>
 
 </div>
