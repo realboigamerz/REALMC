@@ -1,127 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>REALMC</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@900&display=swap" rel="stylesheet">
-
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>RealMC - Minecraft Server</title>
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet"/>
 <style>
-body{
-    margin:0;
-    background:black;
-    overflow:hidden;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    height:100vh;
-    font-family:'Orbitron',sans-serif;
+:root{
+  --green:#39ff14;
+  --cyan:#00e5ff;
+  --gold:#ffd700;
+  --red:#ff4444;
+  --purple:#b040ff;
+  --dark:#0a0a0f;
+  --card:#111118;
+  --card2:#16161f;
+  --border:#2a2a3a;
+  --white:#f0f0ff;
 }
-
-/* 🔥 BACKGROUND GLOW */
-body::before{
-    content:"";
-    position:absolute;
-    width:100%;
-    height:100%;
-    background: radial-gradient(circle, rgba(255,0,0,0.15), transparent 70%);
-    animation: bgGlow 6s ease-in-out infinite alternate;
-}
-
-@keyframes bgGlow{
-    from{opacity:0.2;}
-    to{opacity:0.6;}
-}
-
-/* 💀 R */
-#r{
-    position:absolute;
-    font-size:140px;
-    color:#fff;
-    opacity:0;
-    transform:scale(0.5);
-    animation: rEnter 2.5s ease forwards;
-}
-
-@keyframes rEnter{
-    0%{
-        opacity:0;
-        transform:scale(0.3);
-        filter:blur(20px);
-    }
-    40%{
-        opacity:1;
-        transform:scale(1.6);
-        filter:blur(5px);
-    }
-    70%{
-        transform:scale(1.4);
-    }
-    100%{
-        opacity:1;
-        transform:scale(1.5);
-        filter:blur(0);
-        text-shadow:
-        0 0 20px red,
-        0 0 40px orange,
-        0 0 80px crimson;
-    }
-}
-
-/* REALMC */
-#realmc{
-    position:absolute;
-    font-size:65px;
-    color:white;
-    opacity:0;
-    transform:translateY(40px);
-    transition:2s ease;
-}
-
-/* RGB EFFECT */
-.rgb{
-    animation: rgb 2s infinite alternate;
-}
-
-@keyframes rgb{
-    0%{color:#ff004c;}
-    50%{color:#00ffcc;}
-    100%{color:#00aaff;}
-}
-</style>
-</head>
-
-<body>
-
-<h1 id="r">R</h1>
-<h1 id="realmc">REALMC</h1>
-
-<script>
-
-// ⏱ R fade + remove
-setTimeout(()=>{
-    let r = document.getElementById("r");
-    r.style.opacity="0";
-
-    setTimeout(()=>{
-        r.style.display="none"; // 💥 completely gone
-    },800);
-
-},3000);
-
-// ⏱ REALMC entry
-setTimeout(()=>{
-    let t=document.getElementById("realmc");
-    t.style.opacity="1";
-    t.style.transform="translateY(0)";
-    t.classList.add("rgb");
-},3800);
-
-</script>
-
-</body>
-</html>
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--dark);color:var(--white);font-family:'Nunito',sans-serif;overflow-x:hidden;}
  
 #particles{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0;}
 .particle{position:absolute;width:4px;height:4px;border-radius:50%;animation:float linear infinite;}
@@ -313,48 +212,6 @@ footer span{color:var(--green);}
   .logo{font-size:13px;}
   .stats-row{gap:12px;}
   .yt-stats{gap:12px;}
-
-/* =========================================
-   SAB PAGES KE LIYE ALAG BACKGROUNDS
-   ========================================= */
-
-/* 1. HOME Page ka background */
-#home.page, .hero {
-  background: linear-gradient(rgba(10, 10, 15, 0.7), rgba(10, 10, 15, 0.95)), url('bg4.jpg') !important;
-  background-size: cover !important;
-  background-position: center !important;
-  background-attachment: fixed !important;
-}
-
-/* 2. SERVER Page ka background (Iska ID 'server' hai) */
-#server.page {
-  background: linear-gradient(rgba(10, 10, 15, 0.8), rgba(10, 10, 15, 0.98)), url('bg1.jpg') !important;
-  background-size: cover !important;
-  background-position: center !important;
-  background-attachment: fixed !important;
-}
-
-/* 3. YT Page ka background (Iska ID 'yt' hai) */
-#yt.page {
-  background: linear-gradient(rgba(10, 10, 15, 0.75), rgba(10, 10, 15, 0.95)), url('bg2.jpg') !important;
-  background-size: cover !important;
-  background-position: center !important;
-  background-attachment: fixed !important;
-}
-
-/* 4. SHOP Page ka background (Iska ID 'shop' hai) */
-#shop.page {
-  background: linear-gradient(rgba(10, 10, 15, 0.75), rgba(10, 10, 15, 0.95)), url('bg3.jpg') !important;
-  background-size: cover !important;
-  background-position: center !important;
-  background-attachment: fixed !important;
-}
-
-/* Taaki background poore screen par dikhe */
-.page {
-  min-height: 100vh !important;
-  width: 100% !important;
-
 }
 </style>
 </head>
